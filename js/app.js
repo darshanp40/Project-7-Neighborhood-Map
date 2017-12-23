@@ -89,13 +89,11 @@ function initMap() {
       this.isNavBarOpen(!this.isNavBarOpen());
     };
 
-    // Creating list elements from the metroStationList
     this.metroStationList = ko.observableArray();
     appConfig.appModel.forEach(function(item) {
       self.metroStationList.push(new MetroStation(item));
     });
 
-    // Create a marker per metroStation item
     this.metroStationList().forEach(function(metroStation) {
       var marker = new google.maps.Marker({
         map: map,
@@ -104,9 +102,7 @@ function initMap() {
         animation: google.maps.Animation.DROP
       });
       metroStation.marker = marker;
-      // Extend the boundaries of the map for each marker
       bounds.extend(marker.position);
-      // Create an onclick event to open an infowindow and bounce the marker at each marker
       marker.addListener("click", function(e) {
         infowindow.setContent(getInfoWindowContent(metroStation));
         infowindow.open(map, marker);
@@ -131,19 +127,15 @@ function initMap() {
       });
     });
 
-    // Creating click for the list item
     this.stationClick = function(metroStation) {
       google.maps.event.trigger(metroStation.marker, "click");
     };
 
-    // Filtering the MetroStation list
     self.filter = ko.observable("");
 
     this.filteredMetroStationList = ko.dependentObservable(function() {
       var q = this.filter().toLowerCase();
-      //var self = this;
       if (!q) {
-        // Return self.metroStationList() the original array;
         return ko.utils.arrayFilter(self.metroStationList(), function(item) {
           item.marker.setVisible(true);
           return true;
