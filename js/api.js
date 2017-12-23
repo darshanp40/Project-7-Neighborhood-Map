@@ -14,9 +14,12 @@ var APIs = (function(){
                 dataType: "json",
                 cache: false,
                 success: successFunction,
-                error: function() {
-                    // in-case API limit gets exhausted
-                    successFunction(JSON.parse(appConfig.sampleAPIResponse));
+                error: function(error) {
+                    if(error.statusText === "Too Many Requests") {
+                        clientID = "client_id=2DCLQCBC1I024ZDBJ2ZEZBZOV2UF1CBIJQODLUCEUFDBC5JQ";
+                        clientSecret = "&client_secret=G3H414IDQTG0ZLA4IOS1I22AHTYWR55XLWGIQ1ZAFSCQDTTV";
+                        fourSquareAPI.requestDetailsAPI(locationID, successFunction);
+                    }
                 }
               });
           } else {
