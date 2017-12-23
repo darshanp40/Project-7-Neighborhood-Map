@@ -1,0 +1,125 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    margin: 0;
+}
+.navbar-section {
+    width: 250px;
+    background: #2e3d49;
+    display:  block;
+    height: 100vh;
+    padding: 0;
+    margin-left: -250px;
+    position: fixed;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    height: 100vh;
+    z-index: 1; 
+}
+.navbar-section:hover {
+    margin-left: 0;    
+}
+.navbar {
+    position: relative;
+}
+
+.nav-button {
+    position: absolute;
+    right: -42px;
+    padding: 10px 10px;
+    cursor: pointer;
+    background: #2e3d49;
+    top: 0;
+}
+.clearfix {
+    clear: both;
+}
+.nav-slice {
+    background-color: #02b3e4;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    margin-bottom: 4px;
+}
+
+.search-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.main-content:before, .main-content:after {
+    display: table;
+    content: " ";
+}
+
+.list-item {
+    padding: 15px 10px;
+    list-style:  none;
+    margin: 0;
+    border-top: 1px solid #fff;
+    color:#fff;
+}
+.list-item:last-child {
+    border-bottom:  1px solid #fff;
+}
+.search-box {
+    padding: 15px 10px;
+}
+.content-list {
+    padding-left: 0;
+    margin: 0;
+}
+#map {
+    height: 100vh;
+    width: 100%;
+}
+.image-card {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #e0e4e7;
+    border-radius: 3px;
+    color: #000;
+    box-shadow: 0 4px 8px -3px #555454;
+    max-width: 350px;
+    padding: 0;
+    width: 280px;
+    z-index: 3;
+    transition: visibility 0s, opacity 0.25s ease-out;
+}
+.card-header-text, .card-footer-text {
+    font-size: 14px;
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #000;
+    text-align: center;
+}
+.card-footer-text a {
+    text-decoration: none;
+}
+.card-image {
+    text-align: center;
+    padding:5px;
+}
+.card-image img {
+    width:200px;
+    height: 200px; 
+}

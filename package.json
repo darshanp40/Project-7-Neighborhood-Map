@@ -1,0 +1,14 @@
+{
+  "name": "darshan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "darshan",
+  "license": "ISC",
+  "dependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
