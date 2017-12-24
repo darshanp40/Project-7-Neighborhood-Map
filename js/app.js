@@ -58,8 +58,17 @@ function initMap() {
     return contentString;
   }
 
+  // An object for a single metro station
+  var MetroStation = function(data) {
+    this.name = data.name;
+    this.location = data.location;
+    this.id = data.id;
+    this.placeURL = "";
+    this.imageURL = "";
+  };
+  
   /* Ref: https://developers.google.com/maps/documentation/javascript/examples/marker-animations */
-  function addAnimation(marker) {
+  MetroStation.prototype.addAnimation = function(marker) {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
     } else {
@@ -69,17 +78,6 @@ function initMap() {
       }, 700);
     }
   }
-
-  // An object for a single metro station
-  var MetroStation = function(data) {
-    var self = this;
-    this.name = ko.observable(data.name);
-    this.location = data.location;
-    this.id = data.id;
-    this.placeURL = "";
-    this.imageURL = "";
-  };
-
   function ViewModel() {
     var self = this;
 
@@ -106,7 +104,7 @@ function initMap() {
       marker.addListener("click", function(e) {
         infowindow.setContent(getInfoWindowContent(metroStation));
         infowindow.open(map, marker);
-        addAnimation(marker);
+        metroStation.addAnimation(marker);
       });
     });
     
@@ -134,25 +132,18 @@ function initMap() {
     self.filter = ko.observable("");
 
     this.filteredMetroStationList = ko.dependentObservable(function() {
-      var q = this.filter().toLowerCase();
-      if (!q) {
-        return ko.utils.arrayFilter(self.metroStationList(), function(item) {
-          item.marker.setVisible(true);
-          return true;
-        });
-      } else {
+      var searchedQuery = this.filter().toLowerCase();
         return ko.utils.arrayFilter(this.metroStationList(), function(item) {
-          if (item.name.toLowerCase().indexOf(q) >= 0) {
-            return true;
-          } else {
-            item.marker.setVisible(false);
-            return false;
-          }
-        });
-      }
+        var bResult = (item.name.toLowerCase().indexOf(searchedQuery) >= 0);
+        item.marker.setVisible(bResult);
+        return bResult;
+      });
     }, this);
   }
 
   // Activates knockout.js
   ko.applyBindings(new ViewModel());
+}
+function mapError() {
+  alert("Oops! Something went wrong. Please try again after sometime");
 }

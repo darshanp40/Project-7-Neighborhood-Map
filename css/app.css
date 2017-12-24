@@ -67,7 +67,8 @@ body {
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.main-content:before, .main-content:after {
+.main-content:before,
+.main-content:after {
     display: table;
     content: " ";
 }
@@ -105,7 +106,8 @@ body {
     z-index: 3;
     transition: visibility 0s, opacity 0.25s ease-out;
 }
-.card-header-text, .card-footer-text {
+.card-header-text,
+.card-footer-text {
     font-size: 14px;
     padding: 12px;
     border-bottom: 1px solid #f0f0f0;
