@@ -17,9 +17,7 @@ var APIs = (function() {
         }).done(function(result) {
             successFunction(result);
         }).fail(function(error) {
-            if (error.statusText === "Too Many Requests") {
-             alert("Search limit on this page has exhausted. Please try again after 24 hours.");
-            }
+             alert("Oops! something went wrong. Please try after some time");
         });
       } else {
         successFunction(JSON.parse(localStorage.getItem(locationID)));
